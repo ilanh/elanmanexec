@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     supervisor \
     vim
-RUN pip install --upgrade pip && \
+RUN pip3 install --upgrade pip && \
     apt-add-repository ppa:ansible/ansible -y && \
     apt-get update && apt-get install -y ansible
 
@@ -52,17 +52,17 @@ RUN chmod ug+x /code/initialize.sh
 # Coonfigure ansible env
 RUN ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -N "" -q && cp /root/.ssh/id_rsa.pub \
     /root/.ssh/authorized_keys && cp /code/sshconfig /root/.ssh/config
-RUN ansible-galaxy install ilanh.elanman
+#RUN ansible-galaxy install ilanh.elanman
 WORKDIR ilanh.elanman
-RUN service ssh start && ansible-playbook -i managers.sample elanman.yml -e "destinationDir=/code/myelanman"
+RUN git clone -b develop https://github.com/ilanh/elanman.git .
+RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman"
 
 # Expose ports
 # 22 = ssh
 # 80 = Nginx
 # 8000 = Gunicorn
 # 3306 = MySQL
-EXPOSE 22 80 8000
-# 3306
+EXPOSE 22 80 3306 8000
 
 # Configure Nginx
 RUN ln -s /code/nginx.conf /etc/nginx/sites-enabled/portal.conf

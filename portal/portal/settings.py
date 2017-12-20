@@ -25,7 +25,7 @@ SECRET_KEY = 'unnthehf9yk=1ic0@(_b#h=ed58yu4-f)5hx@*(x9i3sqz8#@k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'answers',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +74,24 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'devdb',  # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'devuser',
+        'PASSWORD': 'devpass',  # Entered via fab command; leave blank if using SQLite
+        'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',  # Set to empty string for default.
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -118,3 +130,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+STATIC_ROOT = '/static/';
+
+# Import production settings if the environment variable DJANGO_PRODUCTION is true
+# (It's set to True by default in the Dockerfile, but you can override it with `docker run` for development)
+if os.environ['DJANGO_PRODUCTION'] == 'true':
+    from settings_production import *
