@@ -17,19 +17,20 @@ RUN echo 'mysql-server mysql-server/root_password_again password devrootpass' | 
 RUN apt-get update && apt-get install -y \
     git \
     software-properties-common \
-#    libmysqlclient-dev \
-#    mysql-server \
+    libmysqlclient-dev \
+    mysql-server \
     openssh-server \
     nginx \
     python3 \
     python3-dev \
-#    python-mysqldb \
+    python3-mysqldb \
     python3-setuptools \
     python3-pip \
     supervisor \
     vim
-RUN apt-add-repository ppa:ansible/ansible -y
-RUN apt-get update && apt-get install -y ansible
+RUN pip install --upgrade pip && \
+    apt-add-repository ppa:ansible/ansible -y && \
+    apt-get update && apt-get install -y ansible
 
 #RUN easy_install3 pip
 
