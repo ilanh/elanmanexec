@@ -61,7 +61,7 @@ class PublicContribUpdateView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super(PublicContribUpdateView, self).get_context_data(*args, **kwargs)
         shortname = self.get_object().shortname
-        context['title'] = f'Update Name: {shortname}'
+        context['title'] = shortname
         return context
 
     def get_queryset(self):
