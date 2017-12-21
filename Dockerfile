@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 # Enable production settings by default; for development, this can be set to 
 # `false` in `docker run --env`
-ENV DJANGO_PRODUCTION=false
+#ENV DJANGO_PRODUCTION=false
 
 # Set terminal to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,18 +17,18 @@ RUN echo 'mysql-server mysql-server/root_password_again password devrootpass' | 
 RUN apt-get update && apt-get install -y \
     git \
     software-properties-common \
-    libmysqlclient-dev \
-    mysql-server \
+#    libmysqlclient-dev \
+#    mysql-server \
     openssh-server \
     nginx \
     python3 \
     python3-dev \
-    python3-mysqldb \
+#    python3-mysqldb \
     python3-setuptools \
     python3-pip \
     supervisor \
     vim
-RUN pip install --upgrade pip && \
+RUN pip3 install --upgrade pip && \
     apt-add-repository ppa:ansible/ansible -y && \
     apt-get update && apt-get install -y ansible
 
