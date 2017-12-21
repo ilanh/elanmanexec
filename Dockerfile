@@ -55,7 +55,8 @@ RUN ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -N "" -q && cp /root/.ssh/id_rsa.pu
 RUN ansible-galaxy install ilanh.elanman
 WORKDIR ilanh.elanman
 #RUN git clone -b develop https://github.com/ilanh/elanman.git .
-RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman"
+#RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman"
+RUN service ssh start && ansible-playbook -i managers.sample elanman.yml -e "destinationDir=/code/myelanman"
 
 # Expose ports
 # 22 = ssh
