@@ -55,7 +55,7 @@ ROOT_URLCONF = 'portal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,24 +74,24 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'devdb',  # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'devuser',
-        'PASSWORD': 'devpass',  # Entered via fab command; leave blank if using SQLite
-        'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',  # Set to empty string for default.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'devdb',  # Or path to database file if using sqlite3.
+#         # The following settings are not used with sqlite3:
+#         'USER': 'devuser',
+#         'PASSWORD': 'devpass',  # Entered via fab command; leave blank if using SQLite
+#         'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+#         'PORT': '',  # Set to empty string for default.
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -139,5 +139,5 @@ STATIC_ROOT = '/static/';
 
 # Import production settings if the environment variable DJANGO_PRODUCTION is true
 # (It's set to True by default in the Dockerfile, but you can override it with `docker run` for development)
-if os.environ['DJANGO_PRODUCTION'] == 'true':
-    from settings_production import *
+# if os.environ['DJANGO_PRODUCTION'] == 'true':
+#     from settings_production import *

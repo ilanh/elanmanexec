@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block head_title %}{{ object.title }} | {{ block.super }}{% endblock head_title %}
+{% block content %}
+{% include 'snippets/detail_top.html' %}
+        <li class="list-group-item"><b>Short Name:</b> {{ object.shortname }}</li>
+        <li class="list-group-item"><b>External ID:</b> {{ object.exid }}</li>
+        <li class="list-group-item"><b>Slug:</b> {{ object.slug }}</li>
+{% if request.user.username == object.owner.username %}<a class="btn btn-danger float-right" href="{{ object.get_absolute_url }}del/" role="button">Delete</a>{% endif %}
+{% include 'snippets/detail_bottom.html' %}
+{% endblock %}

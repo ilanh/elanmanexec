@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="alert alert-success">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-roles-list" data-toggle="list"
+                href="#list-roles" role="tab" aria-controls="roles">Roles
+                <span class="badge badge-secondary float-right">{{ rolelist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-logicalgroup-list" data-toggle="list"
+                href="#list-logicalgroup" role="tab" aria-controls="logicalgroup">LogicalGroup
+                <span class="badge badge-secondary float-right">{{ logicalgrouplist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-roletasks-list" data-toggle="list"
+                href="#list-roletasks" role="tab" aria-controls="roletasks">RoleTasks
+                <span class="badge badge-secondary float-right">{{ roletasklist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-roletemplate-list" data-toggle="list"
+                href="#list-roletemplates" role="tab" aria-controls="roletemplates">Role Templates
+                <span class="badge badge-secondary float-right">{{ roletemplatelist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-configsection-list" data-toggle="list"
+                href="#list-configsection" role="tab" aria-controls="configsection">Config Section
+                <span class="badge badge-secondary float-right">{{ configsectionlist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-configsub-list" data-toggle="list"
+                href="#list-configsubs" role="tab" aria-controls="configsubs">Config Objects
+                <span class="badge badge-secondary float-right">{{ configobjectlist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-configvalue-list" data-toggle="list"
+                href="#list-configvalues" role="tab" aria-controls="configvalues">Config Values
+                <span class="badge badge-secondary float-right">{{ configvaluelist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-api-list" data-toggle="list"
+                href="#list-api" role="tab" aria-controls="api">API
+                <span class="badge badge-secondary float-right">{{ apilist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-apisection-list" data-toggle="list"
+                href="#list-apisections" role="tab" aria-controls="apisections">API Sections
+                <span class="badge badge-secondary float-right">{{ apisectionlist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-apisub-list" data-toggle="list"
+                href="#list-apisubs" role="tab" aria-controls="apisubs">API Objects
+                <span class="badge badge-secondary float-right">{{ apiobjectlist|length }}</span>
+            </a>
+            <a class="list-group-item list-group-item-action" id="list-apivalue-list" data-toggle="list"
+                href="#list-apivalues" role="tab" aria-controls="apivalues">API Values
+                <span class="badge badge-secondary float-right">{{ apivaluelist|length }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-roles" role="tabpanel" aria-labelledby="list-roles-list">
+                Explain Roles...<br>
+                <a href='{% url "extend:listrole" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createrole" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-logicalgroup" role="tabpanel" aria-labelledby="list-logicalgroup-list">
+                Explain Logical Groups...<br>
+                <a href='{% url "extend:listlogicalgroup" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createlogicalgroup" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-roletasks" role="tabpanel" aria-labelledby="list-roletasks-list">
+                Explain Role Tasks...<br>
+                <a href='{% url "extend:listroletask" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createroletask" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-roletemplates" role="tabpanel" aria-labelledby="list-roletemplate-list">
+                Explain Role Templates...<br>
+                <a href='{% url "extend:listroletemplate" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createroletemplate" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-configsection" role="tabpanel" aria-labelledby="list-configsection-list">
+                Explain Config Sections...<br>
+                <a href='{% url "extend:listconfigsection" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createconfigsection" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-configsubs" role="tabpanel" aria-labelledby="list-configsub-list">
+                Explain Config Objects...<br>
+                <a href='{% url "extend:listconfigsub" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createconfigsub" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-configvalues" role="tabpanel" aria-labelledby="list-configvalue-list">
+                Explain Config Values...<br>
+                <a href='{% url "extend:listconfigvalue" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createconfigvalue" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-api" role="tabpanel" aria-labelledby="list-api-list">
+                Explain API...<br>
+                <a href='{% url "extend:listapi" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createapi" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-apisections" role="tabpanel" aria-labelledby="list-apisection-list">
+                Explain API Sections...<br>
+                <a href='{% url "extend:listapisection" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createapisection" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-apisubs" role="tabpanel" aria-labelledby="list-apisub-list">
+                Explain API Objects...<br>
+                <a href='{% url "extend:listapisub" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createapisub" %}' class="badge badge-success">Create</a>
+            </div>
+            <div class="tab-pane fade" id="list-apivalues" role="tabpanel" aria-labelledby="list-apivalue-list">
+                Explain API Values...<br>
+                <a href='{% url "extend:listapivalue" %}' class="badge badge-primary">List</a>
+                <a href='{% url "extend:createapivalue" %}' class="badge badge-success">Create</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
