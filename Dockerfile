@@ -61,8 +61,7 @@ RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "de
 # 22 = ssh
 # 80 = Nginx
 # 8000 = Gunicorn
-# 3306 = MySQL
-EXPOSE 22 80 3306 8000
+EXPOSE 22 80 8000
 
 # Configure Nginx
 RUN ln -s /code/nginx.conf /etc/nginx/sites-enabled/portal.conf
