@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     supervisor \
     vim
+# Install Ansible (apt-add-repository is dependent on software-properties-common)
 RUN pip3 install --upgrade pip && \
     apt-add-repository ppa:ansible/ansible -y && \
     apt-get update && \
