@@ -1,10 +1,22 @@
 # from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView, TemplateView
 from .models import PublicContrib
 from .forms import PublicContribCreateForm
 from django.urls import reverse_lazy
+from django import template
 # Create your views here.
+
+register = template.Library()
+
+
+class HomeView(TemplateView):
+    """ Simple Template View"""
+    template_name = 'home.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        return context
 
 
 class PublicContribListView(ListView):

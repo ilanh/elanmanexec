@@ -9,105 +9,15 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="jumbotron">
-            <h1 class="display-3">Welcome</h1>
-            <p class="lead">The main reason for this site is generate the yaml required for <a
-                    href="https://github.com/ilanh/elanman" target="_blank">eLan Manager</a></p>
-            <hr class="my-4">
-            <p>I'm just starting with the wizard, you can give it a try here:</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="/start/" role="button">Start Wizard</a>
-            </p>
-        </div>
+
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <div class="alert alert-primary">
-            <a href="https://github.com/ilanh/" target="_blank">My Projects</a> on github:
-        </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <div class="card-group">
-            <div class="card">
-                <!--<img class="card-img-top" src="holder.js/100px80" alt="Card image cap">-->
-                <div class="card-body">
-                    <h4 class="card-title">eLanman</h4>
-                    <p class="card-text">Ansible playbook to generate another playbook tailor made to your
-                        environment.</p>
-                    <p class="card-text"><a href="https://github.com/ilanh/elanman" class="btn btn-primary btn-sm"
-                                            target="_blank">Go to</a></p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        <div class="input-group input-group-sm">
-                            <input type="text" id="cloneem" value="https://github.com/ilanh/elanman.git"
-                                   class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-secondary" data-clipboard-target="#cloneem" id="copyem">copy</button>
-                        </span>
-                        </div>
-                    </small>
-                </div>
-            </div>
-            <div class="card">
-                <!--<img class="card-img-top" src="holder.js/100px80" alt="Card image cap">-->
-                <div class="card-body">
-                    <h4 class="card-title">MyeLanman</h4>
-                    <p class="card-text">The output playbook of elanman if no answer file is given and the sample is
-                        applied.</p>
-                    <p class="card-text"><a href="https://github.com/ilanh/myelanman" class="btn btn-primary btn-sm"
-                                            target="_blank">Go to</a></p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        <div class="input-group input-group-sm">
-                            <input type="text" id="clonemyem" value="https://github.com/ilanh/myelanman.git"
-                                   class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-secondary" data-clipboard-target="#clonemyem" id="copymyem">copy</button>
-                        </span>
-                        </div>
-                    </small>
-                </div>
-            </div>
-            <div class="card">
-                <!--<img class="card-img-top" src="holder.js/100px80" alt="Card image cap">-->
-                <div class="card-body">
-                    <h4 class="card-title">eLanmanWeb</h4>
-                    <p class="card-text">This website, eventually will generate answers.yaml to download after running a
-                        short wizard</p>
-                    <p class="card-text"><a href="https://github.com/ilanh/elanmanweb" class="btn btn-primary btn-sm"
-                                            target="_blank">Go to</a></p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        <div class="input-group input-group-sm">
-                            <input type="text" id="cloneemweb" value="https://github.com/ilanh/elanmanweb.git"
-                                   class="form-control">
-                            <span class="input-group-btn">
-                        <button class="btn btn-secondary" data-clipboard-target="#cloneemweb"
-                                id="copyemweb">copy</button>
-                        </span>
-                        </div>
-                    </small>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-<script src="{% static 'home/clipboard.min.js' %}"></script>
-<script>
-    (function(){
-    new Clipboard('#copyem');
-})();
-    (function(){
-    new Clipboard('#copymyem');
-})();
-    (function(){
-    new Clipboard('#copyemweb');
-})();
-</script>
 {% endblock content %}
