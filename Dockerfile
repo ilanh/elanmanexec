@@ -4,7 +4,6 @@ FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 ENV ANSIBLE_ROLES_PATH /code
 
-
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     apt-add-repository ppa:ansible/ansible -y
@@ -32,14 +31,15 @@ RUN ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -N "" -q && cp /root/.ssh/id_rsa.pu
     /root/.ssh/authorized_keys && cp /code/sshconfig /root/.ssh/config
 # Get elanman
 # Production use galaxy
-# RUN ansible-galaxy install ilanh.elanman
+RUN ansible-galaxy install ilanh.elanman
 WORKDIR ilanh.elanman
 # Develop use github
-RUN git clone -b develop https://github.com/ilanh/elanman.git .
+# RUN git clone -b develop https://github.com/ilanh/elanman.git .
 # Production has yml extentions remove when merge develop
-# RUN service ssh start && ansible-playbook -i managers.sample elanman.yml -e "destinationDir=/code/myelanman"
+RUN service ssh start && ansible-playbook -i managers.sample elanman.yml -e "destinationDir=/code/myelanman"
 # Develop use new yaml extention
-RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman, staticDir=/files/portal"
+# RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman, staticDir=/files/portal"
+
 
 # Expose ports
 # 22 = ssh

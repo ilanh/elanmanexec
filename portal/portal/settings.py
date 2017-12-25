@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'unnthehf9yk=1ic0@(_b#h=ed58yu4-f)5hx@*(x9i3sqz8#@k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,6 +136,7 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = '/files/static/'
+
 
 # Import production settings if the environment variable DJANGO_PRODUCTION is true
 # (It's set to True by default in the Dockerfile, but you can override it with `docker run` for development)

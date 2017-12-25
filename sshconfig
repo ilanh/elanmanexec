@@ -1,3 +1,4 @@
+# always connect as root and accept key silently
 host *
   user root
   StrictHostKeyChecking no
