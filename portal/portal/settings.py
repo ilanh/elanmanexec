@@ -135,7 +135,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = '/files/static/';
+STATIC_ROOT = '/files/static/'
+
 
 # Import production settings if the environment variable DJANGO_PRODUCTION is true
 # (It's set to True by default in the Dockerfile, but you can override it with `docker run` for development)

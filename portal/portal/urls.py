@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from answers.views import HomeView
 
 urlpatterns = [
+    url(r'^$', HomeView.as_view(), name='index'),
     path('admin/', admin.site.urls),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^answers/', include('answers.urls')),
 ]
