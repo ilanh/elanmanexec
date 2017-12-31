@@ -30,16 +30,16 @@ RUN pip3 install --upgrade pip && \
 RUN ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -N "" -q && cp /root/.ssh/id_rsa.pub \
     /root/.ssh/authorized_keys && cp /code/sshconfig /root/.ssh/config
 # Get elanman
+
 # Production use galaxy
 # RUN ansible-galaxy install ilanh.elanman
+
 WORKDIR ilanh.elanman
+
 # Develop use github
 RUN git clone -b develop https://github.com/ilanh/elanman.git .
-# Production has yml extentions remove when merge develop
-# RUN service ssh start && ansible-playbook -i managers.sample elanman.yml -e "destinationDir=/code/myelanman"
-# Develop use new yaml extention
-RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman, staticDir=/files/portal"
 
+RUN service ssh start && ansible-playbook -i managers.sample elanman.yaml -e "destinationDir=/code/myelanman staticDir=/files/portal"
 
 # Expose ports
 # 22 = ssh
