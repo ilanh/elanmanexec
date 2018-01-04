@@ -21,7 +21,10 @@ RUN apt-get update && apt-get install -y \
 # Configure Django project
 ADD . /code
 RUN mkdir /files /files/static /files/media /logs /logs/nginx /logs/gunicorn
-WORKDIR /code
+
+# Install requirements for Django
+WORKDIR /code/portal/
+
 RUN pip3 install --upgrade pip && \
     pip3 install -r requirements.txt && \
     chmod ug+x /code/initialize.sh
@@ -34,7 +37,7 @@ RUN ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -N "" -q && cp /root/.ssh/id_rsa.pu
 # Production use galaxy
 # RUN ansible-galaxy install ilanh.elanman
 
-WORKDIR ilanh.elanman
+WORKDIR /code/ilanh.elanman
 
 # Develop use github
 RUN git clone -b develop https://github.com/ilanh/elanman.git .

@@ -5,6 +5,20 @@ from django.urls import reverse
 from django.db.models import Q
 from django.db.models.signals import pre_save
 
+
+# import the logging library
+import logging
+# from ruamel import yaml.
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='answers.views.log', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
+# logging.debug('text: {} str {} str {}'.format(var1, var2, var3))
+#
+# logging.debug('object: {}'.format(yamlobj))
+# yamlobj = yaml.YAML()
+# yamlobj.register_class(PublicContrib)
+
 # Create your models here.
 User = settings.AUTH_USER_MODEL
 

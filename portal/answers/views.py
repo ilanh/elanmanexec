@@ -5,6 +5,8 @@ from .models import PublicContrib
 from .forms import PublicContribCreateForm
 from django.urls import reverse_lazy
 from django import template
+from ruamel.yaml import YAML
+
 # Create your views here.
 
 register = template.Library()
@@ -27,6 +29,7 @@ class PublicContribListView(ListView):
         except TypeError:
             combined_queryset = PublicContrib.objects.filter(ispublic=True)
         return combined_queryset
+
 
 
 class PublicContribDetailView(DetailView):

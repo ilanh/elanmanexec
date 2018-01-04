@@ -1,0 +1,6 @@
+Django==2.0
+gunicorn==19.7.1
+django-crispy-forms
+pytz==2017.3
+ruamel.yaml==0.15.35
+ruamel.yaml.jinja2==0.2.2

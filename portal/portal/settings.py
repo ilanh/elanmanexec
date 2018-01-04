@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'unnthehf9yk=1ic0@(_b#h=ed58yu4-f)5hx@*(x9i3sqz8#@k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'answers',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -81,18 +82,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#         'NAME': 'devdb',  # Or path to database file if using sqlite3.
-#         # The following settings are not used with sqlite3:
-#         'USER': 'devuser',
-#         'PASSWORD': 'devpass',  # Entered via fab command; leave blank if using SQLite
-#         'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-#         'PORT': '',  # Set to empty string for default.
-#     }
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -111,6 +100,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
